@@ -1,0 +1,19 @@
+{
+  "name": "mern-portfolio",
+  "version": "1.0.0",
+  "description": "My Portfolio Website using ReactJS and ExpressJS",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server.js"
+  },
+  "author": "Suresh Thapa",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.13",
+    "morgan": "^1.10.0"
+  }
+}
