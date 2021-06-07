@@ -16,7 +16,7 @@ const ProgressBar = ({ title, text, width }) => {
 };
 
 const ProgressBarStyle = styled.div`
-  box-shadow: 0px 2px 4px;
+  box-shadow: 0px 1px 1px;
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 2px;
