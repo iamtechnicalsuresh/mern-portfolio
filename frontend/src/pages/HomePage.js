@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HomePage = () => {
@@ -26,6 +27,9 @@ const HomePage = () => {
             <i className="fab fa-youtube" />
           </a>
         </div>
+        <Link to="/contact" className="btn btn-transparent">
+          Contact
+        </Link>
       </div>
       <div className="content-right">
         <img src="/images/my-pic.jpg" alt="profile_pic" />
@@ -106,6 +110,12 @@ const HomeContainer = styled.section`
         }
       }
     }
+    .btn {
+      width: 7rem;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+    }
   }
 
   .content-right {
@@ -121,6 +131,10 @@ const HomeContainer = styled.section`
       border-radius: 50%;
       width: 20rem;
       border: solid 1px var(--white-color);
+      transition: transform 0.5s ease-in;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 

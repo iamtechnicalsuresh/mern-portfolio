@@ -10,7 +10,7 @@ const AboutPage = () => {
       <Title title={"About Me"} />
       <div className="about">
         <div className="left">
-          <img src="/images/my-pic.jpg" alt="about-pic" />
+          <img src="/images/my-pic2.jpg" alt="about-pic" />
         </div>
         <div className="right">
           <h1>I'am Suresh Thapa</h1>

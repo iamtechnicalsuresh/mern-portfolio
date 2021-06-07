@@ -26,6 +26,10 @@ const GlobalStyle = createGlobalStyle`
         width: 100%;
     }
 
+    .a {
+      text-decoration: none;
+    }
+
     .toggle {
         transform: translateX(0);
         opacity: 1;
