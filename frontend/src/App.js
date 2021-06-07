@@ -4,6 +4,10 @@ import styled from "styled-components";
 import GlobalStyle from "./style/GlobalStyle";
 import SideNavbar from "./components/SideNavbar";
 
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ResumePage from "./pages/ResumePage";
@@ -37,6 +41,7 @@ const App = () => {
             <Route path="/about" component={AboutPage} />
             <Route path="/" component={HomePage} exact />
           </Switch>
+          <ToastContainer />
         </Container>
       </Router>
     </>

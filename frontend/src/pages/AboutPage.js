@@ -66,6 +66,13 @@ const AboutPage = () => {
             image={"react-js.svg"}
             text={"Frontend Development design with ReactJS"}
           />
+          <Card
+            title={"Networking"}
+            image={"network-pc.svg"}
+            text={
+              "All kind of network design campus, enterprise and small network using Cisco, Juniper and other devices."
+            }
+          />
         </div>
       </div>
     </AboutContainer>

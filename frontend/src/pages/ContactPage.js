@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 import Title from "../components/Title";
 
@@ -25,9 +26,11 @@ const ContactPage = ({ history }) => {
         { fullname, email, mobile, purpose, message },
         configs
       );
+      toast.success("We will contact you soon.", { position: "top-center" });
       history.push("/");
     } catch (error) {
-      console.log(error);
+      // console.log(error.response.data.message);
+      toast.error(error.response.data.message, { position: "top-center" });
     }
   };
 
@@ -36,38 +39,42 @@ const ContactPage = ({ history }) => {
       <Title title={"Contact Us"} />
       <form className="form-container" onSubmit={submitHandler}>
         <div>
-          <label>Full Name</label>
+          {/* <label>Full Name</label> */}
           <input
             type="text"
             value={fullname}
             onChange={(e) => setFullName(e.target.value)}
             required
+            placeholder="Full Name"
           />
         </div>
         <div>
-          <label>Email</label>
+          {/* <label>Email</label> */}
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder="Email"
           />
         </div>
         <div>
-          <label>Mobile</label>
+          {/* <label>Mobile</label> */}
           <input
             type="text"
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
+            placeholder="Mobile"
           />
         </div>
         <div>
-          <label>Purpose</label>
+          {/* <label>Purpose</label> */}
           <input
             type="text"
             value={purpose}
             onChange={(e) => setPurpose(e.target.value)}
             required
+            placeholder="Purpose"
           />
         </div>
         <div>
@@ -104,15 +111,19 @@ const ContactStyle = styled.section`
     div {
       display: flex;
       flex-direction: column;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
 
       input {
         padding: 0.5rem;
         border-radius: 2px;
         border: none;
-        border-bottom: 2px solid black;
+        border-bottom: 1px solid black;
         outline: none;
         background-color: transparent;
+
+        &::placeholder {
+          color: black;
+        }
       }
 
       textarea {
