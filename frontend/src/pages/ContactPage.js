@@ -136,7 +136,7 @@ const ContactStyle = styled.section`
         padding: 0.5rem;
         background-color: transparent;
         outline: none;
-        border: black solid 2px;
+        border: black solid 1px;
       }
     }
 
