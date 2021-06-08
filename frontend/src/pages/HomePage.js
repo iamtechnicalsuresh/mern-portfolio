@@ -46,6 +46,7 @@ const HomeContainer = styled.section`
   min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  z-index: 1;
   overflow-x: hidden;
 
   .content-left {

@@ -21,6 +21,11 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Poppins', sans-serif;
         /* background: linear-gradient(to top, var(--blue-color), var(--state-blue-color)) ; */
         background-color: var(--state-blue-color);
+
+        .nav-toggle {
+        transform: translateX(0);
+        opacity: 1;
+    }
     }
 
     img {
@@ -31,10 +36,10 @@ const GlobalStyle = createGlobalStyle`
       text-decoration: none;
     }
 
-    .toggle {
+    /* .nav-toggle {
         transform: translateX(0);
         opacity: 1;
-    }
+    } */
 
     .btn {
       display: inline-block;

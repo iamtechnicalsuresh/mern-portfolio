@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const SideNavbar = ({ toggle }) => {
   return (
-    <SidebarContainer className={toggle ? "toggle" : ""}>
+    <SidebarContainer className={toggle ? "nav-toggle" : ""}>
       <div className="profile-pic">
         <img src="/images/my-pic.jpg" alt="profile_pic" />
       </div>
@@ -67,10 +67,14 @@ const SidebarContainer = styled.div`
   top: 0;
   transition: all 0.5s ease-in-out;
 
-  .toggle {
-    transform: translateX(0);
-    opacity: 0;
+  @media screen and (max-width: 700px) {
+    transform: translateX(-500px);
   }
+
+  /* .toggle {
+    transform: translateX(0);
+    opacity: 1;
+  } */
 
   .profile-pic {
     width: 100%;
@@ -148,11 +152,6 @@ const SidebarContainer = styled.div`
         }
       }
     }
-  }
-
-  @media screen and (max-width: 700px) {
-    transform: translateX(-500px);
-    z-index: 9;
   }
 `;
 
