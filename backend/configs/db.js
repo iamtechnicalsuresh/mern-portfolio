@@ -1,8 +1,16 @@
 import mongoose from "mongoose";
 
+// console.log(db);
 const connectDB = async () => {
+  let db;
+
+  if (process.env.NODE_ENV === "production") {
+    db = process.env.prodMongoURI;
+  } else {
+    db = process.env.devMongoURI;
+  }
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URL, {
+    const conn = await mongoose.connect(db, {
       useUnifiedTopology: true,
       useCreateIndex: true,
       useFindAndModify: false,
