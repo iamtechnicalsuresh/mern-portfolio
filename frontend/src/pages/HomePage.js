@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 const HomePage = () => {
   return (
     <HomeContainer>
+      <Helmet>
+        <title>Home - Portfolio</title>
+      </Helmet>
       <div className="content-left">
         <h2>Hello</h2>
         <h1>

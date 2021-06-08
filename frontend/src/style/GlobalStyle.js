@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
         --state-blue-color: #8075FF;
         --white-color: #F8F0FB;
         --ash-grey-color: #CAD5CA;
+        --font-color: #808080;
     }
 
     body {

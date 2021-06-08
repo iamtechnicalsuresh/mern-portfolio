@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 import Title from "../components/Title";
 
 const ContactPage = ({ history }) => {
@@ -36,6 +37,10 @@ const ContactPage = ({ history }) => {
 
   return (
     <ContactStyle>
+      <Helmet>
+        <title>Contact - Portfolio</title>
+      </Helmet>
+
       <Title title={"Contact Us"} />
       <form className="form-container" onSubmit={submitHandler}>
         <div>

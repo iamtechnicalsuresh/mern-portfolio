@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 import Card from "../components/Card";
 import PrimaryButton from "../components/PrimaryButton";
 import Title from "../components/Title";
@@ -7,6 +8,9 @@ import Title from "../components/Title";
 const AboutPage = () => {
   return (
     <AboutContainer>
+      <Helmet>
+        <title>About - Portfolio</title>
+      </Helmet>
       <Title title={"About Me"} />
       <div className="about">
         <div className="left">
