@@ -60,6 +60,7 @@ const CardStyle = styled.div`
   .card-info {
     h2 {
       margin: 0.5rem 0;  
+      color: var(--white-color);
   }
 `;
 

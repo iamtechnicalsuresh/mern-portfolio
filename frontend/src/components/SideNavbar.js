@@ -39,10 +39,10 @@ const SideNavbar = ({ toggle }) => {
         <a href="https://facebook.com/suresh99thapa" target="_new">
           <i className="fab fa-facebook" />
         </a>
-        <a href="https://twiter.com/suresh99thapa" target="_new">
+        <a href="https://twitter.com/suresh99thapa" target="_new">
           <i className="fab fa-twitter-square" />
         </a>
-        <a href="https://github.com" target="_new">
+        <a href="https://github.com/iamtechnicalsuresh" target="_new">
           <i className="fab fa-github-square" />
         </a>
         <a href="https://youtube.com" target="_new">

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import validator from "validator";
 
 const contactSchema = mongoose.Schema(
   {
@@ -10,6 +11,7 @@ const contactSchema = mongoose.Schema(
     email: {
       type: String,
       required: true,
+      validate: validator.isEmail,
     },
     mobile: {
       type: String,

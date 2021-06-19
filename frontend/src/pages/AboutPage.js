@@ -115,6 +115,7 @@ const AboutContainer = styled.section`
       .about-p {
         margin: 1rem 0;
         letter-spacing: 1px;
+        color: var(--primary-font-color);
       }
 
       p {
@@ -126,6 +127,7 @@ const AboutContainer = styled.section`
     .about-details {
       display: flex;
       margin-bottom: 1.5rem;
+      color: var(--primary-font-color);
 
       .info {
         margin-left: 2rem;

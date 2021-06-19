@@ -138,6 +138,7 @@ const ContactStyle = styled.section`
         background-color: transparent;
         outline: none;
         border: black solid 1px;
+        color: var(--white-color);
       }
     }
 
