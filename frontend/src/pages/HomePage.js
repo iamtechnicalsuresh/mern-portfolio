@@ -93,7 +93,7 @@ const HomeContainer = styled.section`
       }
 
       &::before {
-        background: var(--state-blue-color);
+        background: var(--bg-color);
         animation: typewriter 2s steps(18) 2s forwards;
       }
     }
