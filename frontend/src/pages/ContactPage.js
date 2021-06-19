@@ -122,12 +122,13 @@ const ContactStyle = styled.section`
         padding: 0.5rem;
         border-radius: 2px;
         border: none;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid var(--white-color);
         outline: none;
         background-color: transparent;
+        color: var(--white-color);
 
         &::placeholder {
-          color: black;
+          color: var(--font-color);
         }
       }
 
@@ -140,12 +141,12 @@ const ContactStyle = styled.section`
       }
     }
 
-    @media screen and (max-width: 750px) {
-      width: 90%;
-    }
-
     @media screen and (max-width: 1000px) {
       width: 80%;
+    }
+
+    @media screen and (max-width: 750px) {
+      width: 95%;
     }
   }
 `;

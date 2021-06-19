@@ -34,7 +34,7 @@ const ResumeItemStyle = styled.div`
       bottom: 0;
       width: 1.5rem;
       height: 1.5rem;
-      background-color: black;
+      background-color: var(--white-color);
       border-radius: 50%;
     }
   }

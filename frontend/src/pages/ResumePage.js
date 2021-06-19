@@ -81,7 +81,7 @@ const ResumeStyle = styled.div`
   }
 
   .resume-content {
-    border-left: 2px solid black;
+    border-left: 2px solid var(--white-color);
   }
 `;
 

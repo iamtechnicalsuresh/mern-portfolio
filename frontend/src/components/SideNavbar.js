@@ -54,7 +54,7 @@ const SideNavbar = ({ toggle }) => {
 };
 
 const SidebarContainer = styled.div`
-  background-color: var(--black-color);
+  background-color: var(--nav-color);
   width: 16rem;
   height: 100vh;
   display: flex;

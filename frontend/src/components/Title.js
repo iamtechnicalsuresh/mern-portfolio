@@ -10,7 +10,7 @@ const Title = ({ title }) => {
 };
 
 const TitleStyle = styled.div`
-  color: var(--black-color);
+  color: var(--white-color);
   font-size: 1.5rem;
   position: relative;
   width: max-content;

@@ -9,18 +9,21 @@ const GlobalStyle = createGlobalStyle`
     }
 
     :root {
-        --black-color: #171214;
-        --blue-color: #6320EE;
-        --state-blue-color: #8075FF;
+        --bg-color: #10121b;
+        --nav-color: #191d2b;
+        --primary-font-color: #a4acc4;
+        --black-color: #14242C;
+        --blue-color: #14242C;
+        --state-blue-color: #1C344C;
         --white-color: #F8F0FB;
-        --ash-grey-color: #CAD5CA;
+        --ash-grey-color: #1C344C;
         --font-color: #808080;
     }
 
     body {
         font-family: 'Poppins', sans-serif;
-        /* background: linear-gradient(to top, var(--blue-color), var(--state-blue-color)) ; */
-        background-color: var(--state-blue-color);
+        background-color: var(--bg-color);
+        color: var(--primary-font-color);
 
         .nav-toggle {
         transform: translateX(0);

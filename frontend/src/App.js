@@ -30,7 +30,7 @@ const App = () => {
       <GlobalStyle />
       <Router>
         <ToggleStyle onClick={() => setToggle(!toggle)}>
-          <i className="fas fa-bars" />
+          <i className={toggle ? "fas fa-times" : "fas fa-bars"} />
         </ToggleStyle>
         <SideNavbar toggle={toggle} refs={navCloseRef} />
         <Container onClick={navClose}>
