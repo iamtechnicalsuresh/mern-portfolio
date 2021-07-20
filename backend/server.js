@@ -2,10 +2,12 @@ import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import path from "path";
+import cookieParser from "cookie-parser";
 const app = express();
 
 import connectDB from "./configs/db.js";
 import contactRoutes from "./routes/contactRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 import globleErrorHandler from "./middlewares/globleErrorHandler.js";
 
 dotenv.config();
@@ -15,10 +17,12 @@ connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(cookieParser());
 
 const __dirname = path.resolve();
 
 app.use("/api/contact", contactRoutes);
+app.use("/api/users", userRoutes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/build")));
