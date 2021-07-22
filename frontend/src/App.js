@@ -13,6 +13,7 @@ import AboutPage from "./pages/AboutPage";
 import ResumePage from "./pages/ResumePage";
 import PortfolioPage from "./pages/PortfolioPage";
 import ContactPage from "./pages/ContactPage";
+import LoginPage from "./pages/LoginPage";
 
 const App = () => {
   const [toggle, setToggle] = useState(false);
@@ -35,13 +36,14 @@ const App = () => {
         <SideNavbar toggle={toggle} refs={navCloseRef} />
         <Container onClick={navClose}>
           <Switch>
+            <Route path="/login" component={LoginPage} />
             <Route path="/contact" component={ContactPage} />
             <Route path="/portfolio" component={PortfolioPage} />
             <Route path="/resume" component={ResumePage} />
             <Route path="/about" component={AboutPage} />
             <Route path="/" component={HomePage} exact />
           </Switch>
-          <ToastContainer />
+          <ToastContainer position="top-center" />
         </Container>
       </Router>
     </>

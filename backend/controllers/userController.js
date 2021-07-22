@@ -22,18 +22,20 @@ export const registerUser = asyncHandler(async (req, res, next) => {
 });
 
 export const loginUser = asyncHandler(async (req, res, next) => {
+  console.log(req.body);
   const { email, password } = req.body;
   if (email === "" || password === "") {
     return next(new CustomAppError("Email and Password can't be empty."));
   }
   const user = await User.findOne({ email });
 
-  if (!user.email || !(await user.isPasswordMatch(password, user.password))) {
+  if (!user || !(await user.isPasswordMatch(password, user.password))) {
     return next(new CustomAppError("Invalid username and password", 404));
   } else {
     let token = jsonWebToken(user._id);
 
     res.status(200).json({
+      status: "success",
       fullname: user.fullname,
       email: user.email,
       profilePic: user.profilePic,

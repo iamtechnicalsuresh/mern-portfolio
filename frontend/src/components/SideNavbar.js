@@ -1,8 +1,21 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { toast } from "react-toastify";
+
+import { logout } from "../redux/actions/authAction";
 
 const SideNavbar = ({ toggle }) => {
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    toast.success("Logout Successfully.");
+  };
+
   return (
     <SidebarContainer className={toggle ? "nav-toggle" : ""}>
       <div className="profile-pic">
@@ -34,6 +47,13 @@ const SideNavbar = ({ toggle }) => {
             Contact
           </NavLink>
         </li>
+        {userInfo && (
+          <li className="link" onClick={logoutHandler}>
+            <NavLink to="/contact" activeClassName="active-class">
+              Logout
+            </NavLink>
+          </li>
+        )}
       </ul>
       <footer className="footer">
         <a href="https://facebook.com/suresh99thapa" target="_new">

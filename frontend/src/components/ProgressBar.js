@@ -19,7 +19,7 @@ const ProgressBarStyle = styled.div`
   box-shadow: 0px 1px 1px;
   margin: 0.5rem;
   padding: 0.5rem;
-  border-radius: 2px;
+  border-radius: 4px;
   .progress-bar {
     display: flex;
     align-items: center;

@@ -18,6 +18,6 @@ router.route("/").get(isLoggedIn, restrictTo("admin"), getAllUsers);
 router
   .route("/:id")
   .get(isLoggedIn, restrictTo, getUser)
-  .get(isLoggedIn, restrictTo("admin"), deleteUser);
+  .delete(isLoggedIn, restrictTo("admin"), deleteUser);
 
 export default router;

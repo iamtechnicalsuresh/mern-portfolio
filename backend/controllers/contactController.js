@@ -41,3 +41,17 @@ export const getContact = asyncHandler(async (req, res, next) => {
     contact,
   });
 });
+
+export const deleteContact = asyncHandler(async (req, res, next) => {
+  const contact = await Contact.findByIdAndDelete(req.params.id);
+
+  if (!contact) {
+    return next(
+      new CustomAppError("Contact not found please enter correct details.", 400)
+    );
+  }
+  res.status(200).json({
+    status: "success",
+    message: "Contact removed successfully.",
+  });
+});

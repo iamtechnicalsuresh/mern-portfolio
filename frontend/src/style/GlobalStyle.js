@@ -58,6 +58,7 @@ const GlobalStyle = createGlobalStyle`
       border: var(--white-color) solid 2px;
       outline: none;
       transition: all 0.5s ease;
+      color: var(--white-color);
     }
 
     .btn-transparent:hover {

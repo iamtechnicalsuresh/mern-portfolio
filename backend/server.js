@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import path from "path";
 import cookieParser from "cookie-parser";
+import helmet from "helmet";
 const app = express();
 
 import connectDB from "./configs/db.js";
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
+app.use(helmet());
 
 const __dirname = path.resolve();
 
