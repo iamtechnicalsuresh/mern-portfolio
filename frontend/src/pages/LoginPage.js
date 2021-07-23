@@ -27,7 +27,7 @@ const LoginPage = ({ history }) => {
       toast.success("Login Successfully.");
       history.push("/");
     }
-  });
+  }, [dispatch, error, history, userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();

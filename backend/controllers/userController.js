@@ -38,6 +38,7 @@ export const loginUser = asyncHandler(async (req, res, next) => {
       status: "success",
       fullname: user.fullname,
       email: user.email,
+      role: user.role,
       profilePic: user.profilePic,
       token,
     });

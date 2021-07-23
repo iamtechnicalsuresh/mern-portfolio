@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Loader = () => {
   return (
-    <LoaderStyle class="lds-roller">
+    <LoaderStyle className="lds-roller">
       <div></div>
       <div></div>
       <div></div>

@@ -12,7 +12,6 @@ export const isLoggedIn = asyncHandler(async (req, res, next) => {
   ) {
     token = req.headers.authorization.split(" ")[1];
   }
-
   if (!token) {
     return next(
       new CustomAppError("Please login to access this resource", 404)

@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 
 import { logout } from "../redux/actions/authAction";
+import Dropdown from "./Dropdown";
 
 const SideNavbar = ({ toggle }) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  const [dropdownMenu, setDropdownMenu] = useState(false);
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -47,6 +50,25 @@ const SideNavbar = ({ toggle }) => {
             Contact
           </NavLink>
         </li>
+
+        {userInfo && userInfo.role === "admin" ? (
+          <li
+            className="link"
+            onMouseEnter={() => setDropdownMenu(true)}
+            onMouseLeave={() => setDropdownMenu(false)}
+          >
+            <NavLink to="#">
+              Admin
+              {dropdownMenu && (
+                <div className="dropdownMenu">
+                  <Dropdown />
+                </div>
+              )}
+            </NavLink>
+          </li>
+        ) : (
+          ""
+        )}
         {userInfo && (
           <li className="link" onClick={logoutHandler}>
             <NavLink to="/contact" activeClassName="active-class">
@@ -122,6 +144,7 @@ const SidebarContainer = styled.div`
       list-style: none;
       margin: 0.1rem 0;
       display: block;
+      position: relative;
 
       a {
         display: block;
@@ -150,6 +173,12 @@ const SidebarContainer = styled.div`
           opacity: 1;
         }
       }
+
+      .dropdownMenu {
+        position: absolute;
+        right: -15.2rem;
+        top: 0;
+      }
     }
   }
 
@@ -158,16 +187,26 @@ const SidebarContainer = styled.div`
     width: 100%;
     text-align: center;
     border-top: 1px solid var(--white-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
     a {
       margin: 0.8rem;
+      text-decoration: none;
+      /* display: flex; */
+      /* flex-direction: row;
+      align-items: center;
+      justify-content: center; */
 
       i {
         color: var(--white-color);
         padding: 0.5rem;
         transition: all 0.2s ease;
         &:hover {
-          background-color: var(--blue-color);
+          /* background-color: var(--blue-color); */
+          background-color: skyblue;
           border-radius: 50%;
         }
       }
