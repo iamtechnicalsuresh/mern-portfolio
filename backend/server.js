@@ -17,7 +17,7 @@ connectDB();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-if (NODE_ENV === "development") {
+if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 app.use(cookieParser());
