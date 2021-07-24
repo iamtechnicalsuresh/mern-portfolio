@@ -11,6 +11,9 @@ const Dropdown = () => {
       <li>
         <Link to="/admin/users">Users</Link>
       </li>
+      <li>
+        <Link to="/admin/register">Register User</Link>
+      </li>
     </DropdownStyle>
   );
 };

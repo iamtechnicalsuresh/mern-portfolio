@@ -1,45 +1,67 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import * as icons from "react-icons/fa";
+import { userFetchAction } from "../redux/actions/authAction";
+import Loader from "../components/Loader";
 
-const UsersViewPage = () => {
+const UsersViewPage = (history) => {
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const usersList = useSelector((state) => state.usersList);
+  const { users, loading, error } = usersList;
+
+  useEffect(() => {
+    if (!userInfo.role === "admin") {
+      history.push("/");
+    }
+    dispatch(userFetchAction());
+  }, [dispatch, userInfo.role, history]);
+
+  const deleteHandler = (id) => {};
+
   return (
     <TableContainerStyle>
-      {loading && <Loader />}
-      {error && toast.error({ error })}
-      <h1> Contact View Page</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>Mobile</th>
-            <th>Purpose</th>
-            <th>Message</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {contacts.map((cont) => (
-            <tr key={cont._id}>
-              <td>{cont.fullname}</td>
-              <td>{cont.email}</td>
-              <td>{cont.mobile}</td>
-              <td>{cont.purpose}</td>
-              <td className="message">{cont.message}</td>
-              <td className="actions">
-                <div>
-                  <icons.FaEdit />
-                </div>
-                <div>
-                  <icons.FaTimes onClick={() => deleteHandler(cont._id)} />
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        toast.error({ error })
+      ) : (
+        <>
+          <h1> Contact View Page</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user._id}>
+                  <td>{user.fullname}</td>
+                  <td>{user.email}</td>
+                  <td>{user.role}</td>
+                  <td className="actions">
+                    <div className="edit">
+                      <icons.FaEdit />
+                    </div>
+                    <div className="delete">
+                      <icons.FaTimes onClick={() => deleteHandler(user._id)} />
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
     </TableContainerStyle>
   );
 };
@@ -71,14 +93,8 @@ const TableContainerStyle = styled.div`
     padding: 8px;
   }
 
-  /* table tr:nth-child(even) {
-    background-color: #f2f2f2;
-    color: black;
-  } */
-
   table tr:hover {
     background-color: rgba(0, 0, 0, 0.4);
-    /* border: #ddd solid 2px; */
   }
 
   table,
@@ -90,10 +106,6 @@ const TableContainerStyle = styled.div`
     color: white;
   }
 
-  .message {
-    width: 50rem;
-  }
-
   .actions {
     display: flex;
     flex-direction: row;
@@ -103,8 +115,36 @@ const TableContainerStyle = styled.div`
     padding: 0.5rem;
     height: 100%;
 
-    div {
+    .edit {
+      color: green;
       cursor: pointer;
+      border: 1px solid green;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.2rem;
+      transition: color 0.2s ease;
+
+      &:hover {
+        background-color: green;
+        color: black;
+      }
+    }
+
+    .delete {
+      color: red;
+      cursor: pointer;
+      border: 1px solid green;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.2rem;
+      transition: color 0.2s ease;
+
+      &:hover {
+        background-color: red;
+        color: black;
+      }
     }
   }
 `;

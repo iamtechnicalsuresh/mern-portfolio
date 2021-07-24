@@ -15,6 +15,8 @@ import PortfolioPage from "./pages/PortfolioPage";
 import ContactPage from "./pages/ContactPage";
 import LoginPage from "./pages/LoginPage";
 import ContactViewPage from "./pages/ContactViewPage";
+import UsersViewPage from "./pages/UsersViewPage";
+import RegisterUserPage from "./pages/RegisterUserPage";
 
 const App = () => {
   const [toggle, setToggle] = useState(false);
@@ -37,6 +39,8 @@ const App = () => {
         <SideNavbar toggle={toggle} refs={navCloseRef} />
         <Container onClick={navClose}>
           <Switch>
+            <Route path="/admin/register" component={RegisterUserPage} />
+            <Route path="/admin/users" component={UsersViewPage} />
             <Route path="/admin/contact" component={ContactViewPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/contact" component={ContactPage} />

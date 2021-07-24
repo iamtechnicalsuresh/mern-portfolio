@@ -4,10 +4,12 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGOUT,
   CLEAR_ERROR,
-  //   USER_REGISTER_REQUEST,
-  //   USER_REGISTER_SUCCESS,
-  //   USER_REGISTER_FAIL,
-  //   USER_DETAILS_REQUEST,
+  USER_FETCH_REQUEST,
+  USER_FETCH_SUCCESS,
+  USER_FETCH_FAIL,
+  USER_REGISTER_REQUEST,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL,
 } from "../constants/authConstant";
 
 export const userLoginReducer = (state = {}, action) => {
@@ -22,6 +24,34 @@ export const userLoginReducer = (state = {}, action) => {
       return {};
     case CLEAR_ERROR:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const userRegisterReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_REGISTER_REQUEST:
+      return { loading: true };
+    case USER_REGISTER_SUCCESS:
+      return { loading: false, success: true };
+    case USER_REGISTER_FAIL:
+      return { loading: false, error: action.payload };
+    case CLEAR_ERROR:
+      return {};
+    default:
+      return state;
+  }
+};
+
+export const userFetchReducer = (state = { users: [] }, action) => {
+  switch (action.type) {
+    case USER_FETCH_REQUEST:
+      return { loading: true, users: [] };
+    case USER_FETCH_SUCCESS:
+      return { loading: false, users: action.payload.users };
+    case USER_FETCH_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }
