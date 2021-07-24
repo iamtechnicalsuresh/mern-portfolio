@@ -6,19 +6,10 @@ const Dropdown = () => {
   return (
     <DropdownStyle>
       <li>
-        <Link to="/admin/contact" activeClassName="active-class">
-          Contact Us
-        </Link>
+        <Link to="/admin/contact">Contact Us</Link>
       </li>
       <li>
-        <Link to="/admin/users" activeClassName="active-class">
-          Users
-        </Link>
-      </li>
-      <li>
-        <Link to="/admin/contact" activeClassName="active-class">
-          Users
-        </Link>
+        <Link to="/admin/users">Users</Link>
       </li>
     </DropdownStyle>
   );

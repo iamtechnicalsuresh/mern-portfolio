@@ -1,44 +1,13 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import * as icons from "react-icons/fa";
 
-import Loader from "../components/Loader";
-
-import {
-  fetchContactsAction,
-  contactDeleteAction,
-} from "../redux/actions/contactActions";
-
-const ContactViewPage = ({ history }) => {
-  const dispatch = useDispatch();
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
-
-  const contactList = useSelector((state) => state.contactList);
-  const { contacts, loading, error } = contactList;
-
-  const contactDelete = useSelector((state) => state.contactDelete);
-  const { success, error: errorDelete, loading: loadingDelete } = contactDelete;
-
-  useEffect(() => {
-    if (!userInfo) {
-      history.push("/login");
-    }
-    dispatch(fetchContactsAction());
-  }, [dispatch, history, userInfo, success]);
-
-  const deleteHandler = async (id) => {
-    dispatch(contactDeleteAction(id));
-  };
-
+const UsersViewPage = () => {
   return (
     <TableContainerStyle>
       {loading && <Loader />}
-      {loadingDelete && <Loader />}
       {error && toast.error({ error })}
-      {errorDelete && toast.error({ errorDelete })}
       <h1> Contact View Page</h1>
       <table>
         <thead>
@@ -60,10 +29,10 @@ const ContactViewPage = ({ history }) => {
               <td>{cont.purpose}</td>
               <td className="message">{cont.message}</td>
               <td className="actions">
-                <div className="edit">
+                <div>
                   <icons.FaEdit />
                 </div>
-                <div className="delete">
+                <div>
                   <icons.FaTimes onClick={() => deleteHandler(cont._id)} />
                 </div>
               </td>
@@ -134,38 +103,10 @@ const TableContainerStyle = styled.div`
     padding: 0.5rem;
     height: 100%;
 
-    .edit {
-      color: green;
+    div {
       cursor: pointer;
-      border: 1px solid green;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0.2rem;
-      transition: color 0.2s ease;
-
-      &:hover {
-        background-color: green;
-        color: black;
-      }
-    }
-
-    .delete {
-      color: red;
-      cursor: pointer;
-      border: 1px solid green;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0.2rem;
-      transition: color 0.2s ease;
-
-      &:hover {
-        background-color: red;
-        color: black;
-      }
     }
   }
 `;
 
-export default ContactViewPage;
+export default UsersViewPage;

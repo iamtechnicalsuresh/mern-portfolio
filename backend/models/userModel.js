@@ -13,6 +13,7 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
       validate: validator.isEmail,
+      unique: true,
     },
     profilePic: {
       type: String,

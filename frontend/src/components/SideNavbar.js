@@ -71,9 +71,7 @@ const SideNavbar = ({ toggle }) => {
         )}
         {userInfo && (
           <li className="link" onClick={logoutHandler}>
-            <NavLink to="/contact" activeClassName="active-class">
-              Logout
-            </NavLink>
+            <NavLink to="/">Logout</NavLink>
           </li>
         )}
       </ul>

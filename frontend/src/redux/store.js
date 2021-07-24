@@ -3,6 +3,10 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import { userLoginReducer } from "./reducers/authReducer";
+import {
+  contactFetchReducer,
+  contactDeleteReducer,
+} from "./reducers/contactReducers";
 
 const userFromLocalStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
@@ -14,6 +18,8 @@ const initialState = {
 
 const reducers = combineReducers({
   userLogin: userLoginReducer,
+  contactList: contactFetchReducer,
+  contactDelete: contactDeleteReducer,
 });
 
 const middlewares = [thunk];
