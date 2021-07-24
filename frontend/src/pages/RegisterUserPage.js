@@ -48,7 +48,7 @@ const RegisterUserPage = ({ history }) => {
       {error && toast.error({ error })}
       {errorRegister && toast.error({ errorRegister })}
       <LoginPageStyle>
-        <h1>Login</h1>
+        <h1>Register</h1>
         <form className="form-container" onSubmit={submitHandler}>
           <div className="input-form">
             <input
