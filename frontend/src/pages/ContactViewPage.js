@@ -26,8 +26,9 @@ const ContactViewPage = ({ history }) => {
     if (!userInfo) {
       history.push("/login");
     }
+
     dispatch(fetchContactsAction());
-  }, [dispatch, history, userInfo, success]);
+  }, [dispatch, history, userInfo, success, errorDelete]);
 
   const deleteHandler = async (id) => {
     dispatch(contactDeleteAction(id));
@@ -38,6 +39,7 @@ const ContactViewPage = ({ history }) => {
       {loading && <Loader />}
       {loadingDelete && <Loader />}
       {error && toast.error({ error })}
+      {success && toast.success("Contact Removed Successfully.")}
       {errorDelete && toast.error({ errorDelete })}
       <h1> Contact View Page</h1>
       <table>

@@ -6,6 +6,7 @@ import {
   CONTACT_DELETE_REQUEST,
   CONTACT_DELETE_SUCCESS,
   CONTACT_DELETE_FAIL,
+  CLEAR_ERROR,
 } from "../constants/contactConstants";
 
 export const fetchContactsAction = () => async (dispatch, getState) => {
@@ -65,4 +66,8 @@ export const contactDeleteAction = (id) => async (dispatch, getState) => {
           : error.message,
     });
   }
+};
+
+export const Clear_Error = () => (dispatch) => {
+  dispatch({ type: CLEAR_ERROR });
 };

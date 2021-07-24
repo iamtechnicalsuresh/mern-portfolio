@@ -22,7 +22,6 @@ export const registerUser = asyncHandler(async (req, res, next) => {
 });
 
 export const loginUser = asyncHandler(async (req, res, next) => {
-  console.log(req.body);
   const { email, password } = req.body;
   if (email === "" || password === "") {
     return next(new CustomAppError("Email and Password can't be empty."));
