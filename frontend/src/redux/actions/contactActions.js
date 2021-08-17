@@ -16,7 +16,7 @@ export const fetchContactsAction = () => async (dispatch, getState) => {
     const {
       userLogin: { userInfo },
     } = getState();
-    // console.log(userInfo);
+    console.log(userInfo);
 
     const config = {
       headers: {

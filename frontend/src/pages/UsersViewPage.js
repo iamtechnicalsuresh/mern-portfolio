@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import * as icons from "react-icons/fa";
-import { userFetchAction } from "../redux/actions/authAction";
+import { logout, userFetchAction } from "../redux/actions/authAction";
 import Loader from "../components/Loader";
 
 const UsersViewPage = (history) => {
@@ -19,8 +19,11 @@ const UsersViewPage = (history) => {
     if (!userInfo.role === "admin") {
       history.push("/");
     }
+    if (error) {
+      dispatch(logout());
+    }
     dispatch(userFetchAction());
-  }, [dispatch, userInfo.role, history]);
+  }, [dispatch, userInfo.role, history, error]);
 
   const deleteHandler = (id) => {};
 
@@ -110,7 +113,7 @@ const TableContainerStyle = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     font-size: 1.5rem;
     padding: 0.5rem;
     height: 100%;

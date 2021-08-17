@@ -77,3 +77,28 @@ export const deleteUser = asyncHandler(async (req, res, next) => {
     message: "User Removed Successfully.",
   });
 });
+
+export const changePassword = asyncHandler(async (req, res, next) => {
+  const { password, cpassword } = req.body;
+  if (password === "" || cpassword === "") {
+    return next(new CustomAppError("Both fields are required", 404));
+  }
+  if (password !== cpassword) {
+    return next(
+      new CustomAppError("Password and Comfirm Password do not match.", 404)
+    );
+  }
+
+  const user = await User.findById(req.user._id);
+  if (!user || !(await user.isPasswordMatch(password, user.password))) {
+    return next(new CustomAppError("Old Password not match."));
+  } else {
+    user.password = password;
+  }
+
+  await user.save();
+  res.status(200).json({
+    status: "success",
+    message: "Password has been changed successfully.",
+  });
+});

@@ -57,7 +57,7 @@ const SideNavbar = ({ toggle }) => {
             onMouseEnter={() => setDropdownMenu(true)}
             onMouseLeave={() => setDropdownMenu(false)}
           >
-            <NavLink to="#">
+            <NavLink to="/">
               Admin
               {dropdownMenu && (
                 <div className="dropdownMenu">

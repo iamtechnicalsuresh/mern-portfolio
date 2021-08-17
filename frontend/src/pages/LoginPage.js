@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 
-import { login, ClearError } from "../redux/actions/authAction";
+import { login, logout, ClearError } from "../redux/actions/authAction";
 import Loader from "../components/Loader";
 
 const LoginPage = ({ history }) => {
@@ -23,6 +23,7 @@ const LoginPage = ({ history }) => {
     if (error) {
       toast.error(error);
       dispatch(ClearError());
+      dispatch(logout());
     } else if (userInfo) {
       toast.success("Login Successfully.");
       history.push("/");

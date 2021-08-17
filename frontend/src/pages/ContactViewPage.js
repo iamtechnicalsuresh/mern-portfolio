@@ -10,6 +10,7 @@ import {
   fetchContactsAction,
   contactDeleteAction,
 } from "../redux/actions/contactActions";
+import { logout } from "../redux/actions/authAction";
 
 const ContactViewPage = ({ history }) => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const ContactViewPage = ({ history }) => {
 
   const contactList = useSelector((state) => state.contactList);
   const { contacts, loading, error } = contactList;
+  console.log("react", error);
 
   const contactDelete = useSelector((state) => state.contactDelete);
   const { success, error: errorDelete, loading: loadingDelete } = contactDelete;
@@ -26,9 +28,12 @@ const ContactViewPage = ({ history }) => {
     if (!userInfo) {
       history.push("/login");
     }
+    if (error) {
+      dispatch(logout());
+    }
 
     dispatch(fetchContactsAction());
-  }, [dispatch, history, userInfo, success, errorDelete]);
+  }, [dispatch, history, userInfo, success, errorDelete, error]);
 
   const deleteHandler = async (id) => {
     dispatch(contactDeleteAction(id));
@@ -54,23 +59,24 @@ const ContactViewPage = ({ history }) => {
           </tr>
         </thead>
         <tbody>
-          {contacts.map((cont) => (
-            <tr key={cont._id}>
-              <td>{cont.fullname}</td>
-              <td>{cont.email}</td>
-              <td>{cont.mobile}</td>
-              <td>{cont.purpose}</td>
-              <td className="message">{cont.message}</td>
-              <td className="actions">
-                <div className="edit">
-                  <icons.FaEdit />
-                </div>
-                <div className="delete">
-                  <icons.FaTimes onClick={() => deleteHandler(cont._id)} />
-                </div>
-              </td>
-            </tr>
-          ))}
+          {contacts &&
+            contacts.map((cont) => (
+              <tr key={cont._id}>
+                <td>{cont.fullname}</td>
+                <td>{cont.email}</td>
+                <td>{cont.mobile}</td>
+                <td>{cont.purpose}</td>
+                <td className="message">{cont.message}</td>
+                <td className="actions">
+                  <div className="edit">
+                    <icons.FaEdit />
+                  </div>
+                  <div className="delete">
+                    <icons.FaTimes onClick={() => deleteHandler(cont._id)} />
+                  </div>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </TableContainerStyle>
